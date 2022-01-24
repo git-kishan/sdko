@@ -25,10 +25,10 @@ class HomeActivity : AppCompatActivity() {
 
     private fun init() {
         binding.apply {
-            digitBoxContainerWidget.initView(::digitBoxHandler)
+            digitBoxContainerWidget.initView(::digitBoxClickHandler)
             boardWidget.initView(
                 getScreenWidthInPx(getContext()) - dpToPx(getContext(), 32),
-                ::clickHandler
+                ::clickBoardHandler
             )
         }
     }
@@ -37,12 +37,16 @@ class HomeActivity : AppCompatActivity() {
         return this@HomeActivity
     }
 
-    private fun clickHandler(tag: Int) {
-        binding.boardWidget.handleClick(tag)
+    private fun clickBoardHandler(tag: Int) {
+        binding.boardWidget.handleClick(tag,::getSelectableStateOption)
     }
 
-    private fun digitBoxHandler(digitBoxWidget: DigitBoxWidget) {
-        Log.d("klogs", digitBoxWidget.getData().toString())
+    private fun getSelectableStateOption(optionList : Set<Int>,isFixedWidget : Boolean){
+        binding.digitBoxContainerWidget.setSelectableState(optionList,isFixedWidget)
+    }
+
+    private fun digitBoxClickHandler(tag : Int) {
+        Log.d("klogs", tag.toString())
     }
 
 }

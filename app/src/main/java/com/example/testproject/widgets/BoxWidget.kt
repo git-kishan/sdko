@@ -15,7 +15,7 @@ class BoxWidget @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : LinearLayout(context, attrs, defStyleAttr) {
 
-    private val textSizePercentage = 0.15f
+    private val textSizePercentage = 0.18f
     private val binding = DataBindingUtil.inflate<BoxWidgetBinding>(
         LayoutInflater.from(context),
         R.layout.box_widget,
@@ -29,7 +29,7 @@ class BoxWidget @JvmOverloads constructor(
         setTextSize(dimension * textSizePercentage)
     }
 
-    fun getFixedData() : Boolean{
+    fun fixedData() : Boolean{
         return fixedData
     }
 
@@ -47,6 +47,9 @@ class BoxWidget @JvmOverloads constructor(
 
     fun setData(value: String) {
         binding.boxView.text = value
+    }
+    fun getData(): String{
+        return binding.boxView.text.trim().toString()
     }
 
     private fun setTextSize(sizeInPx: Float) {
