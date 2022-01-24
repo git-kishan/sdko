@@ -1,6 +1,7 @@
 package com.example.testproject.utils
 
 import android.content.Context
+import android.util.Log
 import com.example.testproject.R
 
 val leftBoundaryItem = listOf(1, 4, 7)
@@ -27,32 +28,40 @@ fun getBoxTag(parentIndex : Int, childIndex : Int) : Int{
     return tag
 }
 
-fun getBoxLayoutId(position: Int): Int {
-    return when (position) {
-        1 -> R.id.layout_box_1
-        2 -> R.id.layout_box_2
-        3 -> R.id.layout_box_3
-        4 -> R.id.layout_box_4
-        5 -> R.id.layout_box_5
-        6 -> R.id.layout_box_6
-        7 -> R.id.layout_box_7
-        8 -> R.id.layout_box_8
-        9 -> R.id.layout_box_9
-        else -> -1
-    }
+fun getRowTagList(tag : Int) : List<Int>{
+    val list = mutableListOf<Int>()
+    val firstItemInRow = ((tag - 1) / 9) * 9 + 1
+    val lastItem = firstItemInRow + 8
+    (firstItemInRow..lastItem).forEach { list.add(it) }
+    return list
 }
 
-fun getBoxId(position: Int): Int {
-    return when (position) {
-        1 -> R.id.box_1
-        2 -> R.id.box_2
-        3 -> R.id.box_3
-        4 -> R.id.box_4
-        5 -> R.id.box_5
-        6 -> R.id.box_6
-        7 -> R.id.box_7
-        8 -> R.id.box_8
-        9 -> R.id.box_9
-        else -> -1
+fun getColumnTagList(tag : Int) : List<Int>{
+    val list = mutableListOf<Int>()
+    list.add(tag)
+    var currIndex = tag - 9
+    while (currIndex > 0) {
+        list.add(currIndex)
+        currIndex -= 9
     }
+    currIndex = tag + 9
+    while (currIndex <= 81) {
+        list.add(currIndex)
+        currIndex += 9
+    }
+    return list
+}
+
+fun getQuadrantTagList(tag : Int) : List<Int>{
+    val list = mutableListOf<Int>()
+    val boxColIndex = ((tag - 1) % 9 ) / 3 + 1
+    val boxRowIndex = (tag - 1) / 27 + 1
+    val startTag = (boxRowIndex-1)*9*3+(boxColIndex-1)*3 + 1
+    Log.d("klogs","$boxRowIndex , $boxColIndex , $startTag")
+    (startTag..(startTag+2)).forEach {
+        list.add(it)
+        list.add(it+9)
+        list.add(it+18)
+    }
+    return list
 }

@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.RelativeLayout
+import androidx.core.content.res.ResourcesCompat
 import androidx.databinding.DataBindingUtil
 import com.example.testproject.R
 import com.example.testproject.databinding.DigitBoxWidgetBinding
@@ -20,12 +21,41 @@ class DigitBoxWidget @JvmOverloads constructor(
         this, true
     )
 
-    fun setData(digit : Int){
-        binding.digitBox.text  = digit.toString()
+    fun setData(digit: Int) {
+        binding.digitBox.text = digit.toString()
     }
 
-    fun getData() : String{
-        return binding.digitBox.text.toString()
+    fun getData(): Int {
+        return binding.digitBox.text.toString().toInt()
+    }
+
+    fun setSelectable() {
+        binding.digitBoxRootView.background = ResourcesCompat.getDrawable(
+            resources,
+            R.drawable.digit_box_selectable_state,
+            null
+        )
+        binding.digitBox.setTextColor(ResourcesCompat.getColor(
+            resources, R.color.black, null
+        ))
+    }
+
+    fun setNotSelectable() {
+        binding.digitBoxRootView.background = ResourcesCompat.getDrawable(
+            resources,
+            R.drawable.digit_box_non_selectable_state,
+            null
+        )
+        binding.digitBox.setTextColor(ResourcesCompat.getColor(
+            resources, R.color.white, null
+        ))
+    }
+    fun setNormalState(){
+        binding.digitBox.background = ResourcesCompat.getDrawable(
+            resources,
+            R.drawable.digit_box_background,
+            null
+        )
     }
 
 }

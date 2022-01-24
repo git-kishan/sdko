@@ -3,8 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../layout/custom_preview.xml" value="0.21574074074074073" />
         <entry key="app/src/main/res/drawable/box_storke_background.xml" value="0.2388888888888889" />
         <entry key="app/src/main/res/drawable/digit_box_background.xml" value="0.21851851851851853" />
+        <entry key="app/src/main/res/drawable/digit_box_non_selectable_state.xml" value="0.21574074074074073" />
+        <entry key="app/src/main/res/drawable/digit_box_selectable_state.xml" value="0.21574074074074073" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.21851851851851853" />
         <entry key="app/src/main/res/drawable/small_box_stroke_drawable.xml" value="0.2388888888888889" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.22735507246376813" />
