@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <com.example.testproject.widgets.DigitBoxWidget
+            android:id="@+id/digit_box_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:clickable="true"
+            android:focusable="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.example.testproject.widgets.DigitBoxWidget
+            android:id="@+id/digit_box_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:clickable="true"
+            android:focusable="true"
+            app:layout_constraintStart_toEndOf="@+id/digit_box_1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.example.testproject.widgets.DigitBoxWidget
+            android:id="@+id/digit_box_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:clickable="true"
+            android:focusable="true"
+            app:layout_constraintStart_toEndOf="@+id/digit_box_2"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.example.testproject.widgets.DigitBoxWidget
+            android:id="@+id/digit_box_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:clickable="true"
+            android:focusable="true"
+            app:layout_constraintStart_toEndOf="@+id/digit_box_3"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.example.testproject.widgets.DigitBoxWidget
+            android:id="@+id/digit_box_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:clickable="true"
+            android:focusable="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/digit_box_4"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.example.testproject.widgets.DigitBoxWidget
+            android:id="@+id/digit_box_6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:clickable="true"
+            android:focusable="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/digit_box_2"
+            app:layout_constraintStart_toStartOf="@+id/digit_box_1"
+            app:layout_constraintTop_toBottomOf="@+id/digit_box_1" />
+
+        <com.example.testproject.widgets.DigitBoxWidget
+            android:id="@+id/digit_box_7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:clickable="true"
+            android:focusable="true"
+            app:layout_constraintEnd_toEndOf="@+id/digit_box_3"
+            app:layout_constraintStart_toStartOf="@+id/digit_box_2"
+            app:layout_constraintTop_toBottomOf="@+id/digit_box_2" />
+
+        <com.example.testproject.widgets.DigitBoxWidget
+            android:id="@+id/digit_box_8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:clickable="true"
+            android:focusable="true"
+            app:layout_constraintEnd_toEndOf="@+id/digit_box_4"
+            app:layout_constraintStart_toStartOf="@+id/digit_box_3"
+            app:layout_constraintTop_toBottomOf="@+id/digit_box_3" />
+
+        <com.example.testproject.widgets.DigitBoxWidget
+            android:id="@+id/digit_box_9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:clickable="true"
+            android:focusable="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/digit_box_5"
+            app:layout_constraintStart_toStartOf="@+id/digit_box_4"
+            app:layout_constraintTop_toBottomOf="@+id/digit_box_4" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

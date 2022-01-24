@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="box_text_color">#E68A8A8A</color>
+    <color name="boundary_black">#158A8A8A</color>
+    <color name="inside_boundary_black">#33737373</color>
+    <color name="selected_box">#0276FD</color>
+    <color name="shadow_selected_box">#99CAE1FF</color>
+
+</resources>
+
+
+
+<!--    100 FF-->
+<!--    95%	F2-->
+<!--    90%	E6-->
+<!--    85%	D9-->
+<!--    80%	CC-->
+<!--    75%	BF-->
+<!--    70%	B3-->
+<!--    65%	A6-->
+<!--    60%	99-->
+<!--    55%	8C-->
+<!--    50%	80-->
+<!--    45%	73-->
+<!--    40%	66-->
+<!--    35%	59-->
+<!--    30%	4D-->
+<!--    25%	40-->
+<!--    20%	33-->
+<!--    15%	26-->
+<!--    10%	1A-->
+<!--    5%	0D-->
+<!--    0%	00-->

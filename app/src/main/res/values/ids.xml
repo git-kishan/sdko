@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="id" name="layout_box_1"/>
+    <item type="id" name="layout_box_2"/>
+    <item type="id" name="layout_box_3"/>
+    <item type="id" name="layout_box_4"/>
+    <item type="id" name="layout_box_5"/>
+    <item type="id" name="layout_box_6"/>
+    <item type="id" name="layout_box_7"/>
+    <item type="id" name="layout_box_8"/>
+    <item type="id" name="layout_box_9"/>
+
+    <item type="id" name="box_1"/>
+    <item type="id" name="box_2"/>
+    <item type="id" name="box_3"/>
+    <item type="id" name="box_4"/>
+    <item type="id" name="box_5"/>
+    <item type="id" name="box_6"/>
+    <item type="id" name="box_7"/>
+    <item type="id" name="box_8"/>
+    <item type="id" name="box_9"/>
+</resources>
