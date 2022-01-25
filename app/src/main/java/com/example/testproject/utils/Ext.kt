@@ -57,11 +57,22 @@ fun getQuadrantTagList(tag : Int) : List<Int>{
     val boxColIndex = ((tag - 1) % 9 ) / 3 + 1
     val boxRowIndex = (tag - 1) / 27 + 1
     val startTag = (boxRowIndex-1)*9*3+(boxColIndex-1)*3 + 1
-    Log.d("klogs","$boxRowIndex , $boxColIndex , $startTag")
     (startTag..(startTag+2)).forEach {
         list.add(it)
         list.add(it+9)
         list.add(it+18)
     }
     return list
+}
+
+fun isMatrixFilledCompletely(board : Array<IntArray>?) : Boolean{
+    if(board.isNullOrEmpty())return false
+    for(row in 0 until 9){
+        for(col in 0 until 9){
+            if(board[row][col]==0){
+                return false
+            }
+        }
+    }
+    return true
 }

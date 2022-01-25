@@ -29,7 +29,7 @@ class BoxWidget @JvmOverloads constructor(
         setTextSize(dimension * textSizePercentage)
     }
 
-    fun fixedData() : Boolean{
+    fun isFixedData() : Boolean{
         return fixedData
     }
 

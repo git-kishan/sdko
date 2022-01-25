@@ -20,33 +20,38 @@ class DigitBoxContainerWidget @JvmOverloads constructor(
         this,true
     )
 
+    private var hintEnabled = true
+
     fun initView(callback : (tag : Int)->Unit){
         binding.apply {
-            digitBox1.setData(1)
-            digitBox2.setData(2)
-            digitBox3.setData(3)
-            digitBox4.setData(4)
-            digitBox5.setData(5)
-            digitBox6.setData(6)
-            digitBox7.setData(7)
-            digitBox8.setData(8)
-            digitBox9.setData(9)
-
-            digitBox1.setOnClickListener {callback.invoke(digitBox1.getData())}
-            digitBox2.setOnClickListener {callback.invoke(digitBox2.getData())}
-            digitBox3.setOnClickListener {callback.invoke(digitBox3.getData())}
-            digitBox4.setOnClickListener {callback.invoke(digitBox4.getData())}
-            digitBox5.setOnClickListener {callback.invoke(digitBox5.getData())}
-            digitBox6.setOnClickListener {callback.invoke(digitBox6.getData())}
-            digitBox7.setOnClickListener {callback.invoke(digitBox7.getData())}
-            digitBox8.setOnClickListener {callback.invoke(digitBox8.getData())}
-            digitBox9.setOnClickListener {callback.invoke(digitBox9.getData())}
-
+            (1..9).forEach{ it->
+                getDigitBox(it)?.apply {
+                    setData(it)
+                    setOnClickListener { callback.invoke(this.getData()) }
+                }
+            }
         }
     }
 
+    fun toggleHintEnabled(){
+        hintEnabled = !hintEnabled
+        (1..9).forEach {
+            getDigitBox(it)?.toggleHintEnabled(hintEnabled)
+        }
+    }
 
     fun setSelectableState(selectableList : Set<Int>,isFixedWidget : Boolean){
+        if(!hintEnabled){
+            for(item in 1..9){
+                val boxWidgetView = getDigitBox(item)
+                if(isFixedWidget){
+                    boxWidgetView?.setNotSelectable()
+                }else{
+                    boxWidgetView?.setSelectable()
+                }
+            }
+            return
+        }
         if(isFixedWidget){
             for(item in 1..9){
                 val boxWidgetView = getDigitBox(item)
