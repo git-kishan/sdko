@@ -41,6 +41,7 @@ class BoardWidget @JvmOverloads constructor(
             binding.boardRootView.addView(quadrantWidget, params)
             quadrantWidget.initView(quadrantDimension, parentIndex, boxViewMap, callback)
         }
+        boxViewMap[0] = BoxWidget(context)  // Dummy widget to avoid errors
         generateBoard()
     }
 
@@ -76,6 +77,9 @@ class BoardWidget @JvmOverloads constructor(
     }
 
     private fun setDataByTag(value : Int){
+        if(currentClickedTag==0){
+            return
+        }
         val matRow = (currentClickedTag-1)/9
         val matCol = (currentClickedTag-1)%9
         mutableBoard?.let {

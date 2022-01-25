@@ -5,7 +5,7 @@
         android:id="@+id/digit_box_root_view"
         android:layout_width="32dp"
         android:layout_height="32dp"
-        android:background="@drawable/digit_box_background">
+        android:background="@drawable/digit_box_selectable_state">
 
         <TextView
             android:id="@+id/digit_box"
