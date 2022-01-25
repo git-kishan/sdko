@@ -20,6 +20,7 @@ class DigitBoxWidget @JvmOverloads constructor(
         R.layout.digit_box_widget,
         this, true
     )
+    private var hintEnabled: Boolean = true
 
     fun setData(digit: Int) {
         binding.digitBox.text = digit.toString()
@@ -29,15 +30,22 @@ class DigitBoxWidget @JvmOverloads constructor(
         return binding.digitBox.text.toString().toInt()
     }
 
+    fun toggleHintEnabled(hintEnabled: Boolean) {
+        this.hintEnabled = hintEnabled
+    }
+
     fun setSelectable() {
         binding.digitBoxRootView.background = ResourcesCompat.getDrawable(
             resources,
             R.drawable.digit_box_selectable_state,
             null
         )
-        binding.digitBox.setTextColor(ResourcesCompat.getColor(
-            resources, R.color.black, null
-        ))
+        binding.digitBox.setTextColor(
+            ResourcesCompat.getColor(
+                resources, R.color.black, null
+            )
+        )
+        isEnabled = true
     }
 
     fun setNotSelectable() {
@@ -46,16 +54,12 @@ class DigitBoxWidget @JvmOverloads constructor(
             R.drawable.digit_box_non_selectable_state,
             null
         )
-        binding.digitBox.setTextColor(ResourcesCompat.getColor(
-            resources, R.color.white, null
-        ))
-    }
-    fun setNormalState(){
-        binding.digitBox.background = ResourcesCompat.getDrawable(
-            resources,
-            R.drawable.digit_box_background,
-            null
+        binding.digitBox.setTextColor(
+            ResourcesCompat.getColor(
+                resources, R.color.white, null
+            )
         )
+        isEnabled = false
     }
 
 }

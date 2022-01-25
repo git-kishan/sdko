@@ -2,14 +2,35 @@ package com.example.testproject.utils
 
 import android.content.res.Configuration
 import android.content.res.Resources
+import android.graphics.Color
+import android.view.View
+import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatDelegate
 import com.example.testproject.R
+import android.graphics.drawable.TransitionDrawable
+import android.graphics.drawable.ColorDrawable
+
 
 fun setForcedLightTheme(resources : Resources) {
     when (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) {
         Configuration.UI_MODE_NIGHT_YES, Configuration.UI_MODE_NIGHT_NO ->
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
     }
+}
+
+fun View.startBackgroundAnimation(){
+    val colorDrawables = arrayOf(
+        ColorDrawable(Color.BLACK),
+        ColorDrawable(Color.WHITE)
+    )
+    val transitionDrawable = TransitionDrawable(colorDrawables)
+    this.background = transitionDrawable
+    transitionDrawable.startTransition(800)
+}
+
+fun View.startShaking(){
+    val animation = AnimationUtils.loadAnimation(this.context,R.anim.shake)
+    this.startAnimation(animation)
 }
 
 fun getBoxLayoutId(position: Int): Int {

@@ -3,10 +3,13 @@ package com.example.testproject.widgets
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.RelativeLayout
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.example.testproject.R
 import com.example.testproject.algorithm.Generator
+import com.example.testproject.algorithm.validateSolution
 import com.example.testproject.databinding.BoardWidgetBinding
 import com.example.testproject.utils.*
 
@@ -17,8 +20,10 @@ class BoardWidget @JvmOverloads constructor(
 ) : RelativeLayout(context, attrs, defStyleAttr) {
 
     private val boxViewMap = mutableMapOf<Int, BoxWidget>()
-    private val generator = Generator(9, 35)
+    private val generator = Generator(9, 2)
     private var startingBoard: Array<IntArray>? = null
+    private var mutableBoard : Array<IntArray>? = null
+    private var currentClickedTag = 0
 
     private val binding = DataBindingUtil.inflate<BoardWidgetBinding>(
         LayoutInflater.from(context),
@@ -40,9 +45,47 @@ class BoardWidget @JvmOverloads constructor(
     }
 
     fun handleClick(tag: Int, callback: (optionList: Set<Int>, isFixed: Boolean) -> Unit) {
+        currentClickedTag = tag
         clearPreviousSelection()
         colorHandling(tag)
         getSelectableOptions(tag, callback)
+    }
+
+    fun setData(value : Int){
+        setDataByTag(value)
+        mutableBoard?.let {
+            if(isMatrixFilledCompletely(it)){
+                val validate = validateSolution(it, 9)
+                if(validate){
+                    Toast.makeText(context,"Successfull",Toast.LENGTH_LONG).show()
+                }else{
+                    Toast.makeText(context,"Failed",Toast.LENGTH_LONG).show()
+                }
+            }
+        }
+    }
+
+    fun eraseData(view : View){
+        val boxView = boxViewMap[currentClickedTag]
+        if(boxView?.isFixedData() == true){
+            view.startShaking()
+            return
+        }
+        setDataByTag(0)
+        view.startBackgroundAnimation()
+    }
+
+    private fun setDataByTag(value : Int){
+        val matRow = (currentClickedTag-1)/9
+        val matCol = (currentClickedTag-1)%9
+        mutableBoard?.let {
+            it[matRow][matCol] = value
+        }
+        if(value!=0)
+          boxViewMap[currentClickedTag]?.setData(value.toString())
+        else
+            boxViewMap[currentClickedTag]?.setData("")
+
     }
 
     private fun clearPreviousSelection() {
@@ -64,7 +107,7 @@ class BoardWidget @JvmOverloads constructor(
         tag: Int,
         callback: (optionList: Set<Int>, isFixed: Boolean) -> Unit
     ) {
-        if (boxViewMap[tag]?.fixedData() == true) {
+        if (boxViewMap[tag]?.isFixedData() == true) {
             callback.invoke(setOf(), true)
             return
         }
@@ -98,7 +141,8 @@ class BoardWidget @JvmOverloads constructor(
 
     private fun generateBoard() {
         startingBoard = generator.generateBoard()
-        startingBoard?.let {
+        mutableBoard = startingBoard?.clone()
+        mutableBoard?.let {
             for (i in 0 until 9) {
                 for (j in 0 until 9) {
                     val tagNo = i * 9 + j + 1
